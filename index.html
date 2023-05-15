@@ -22,8 +22,14 @@
 				<li>Avoid burning wood or rubbish</li>
 				<li>Choose environmentally-friendly products</li>
 				<li>Support clean energy initiatives</li>
+			
+				
 			</ul>
 		</section>
+			<h3>Air quality
+			<ul>
+				<li id="C02">Co2:</li>
+			</ul>
 		<section class="call-to-action">
 			<h3>Aqi finder</h3>
 			<p>Enter a city name to find its air quality</p> 
@@ -49,7 +55,12 @@
 
 		xhr.addEventListener('readystatechange', function () {
 			if (this.readyState === this.DONE) {
-				console.log(this.responseText);
+				var co2 = document.getElementById("C02");
+				var co2value = co2.value;
+				var output = JSON.parse(this.responseText);
+				var co2aqi = ouput.CO.aqi;
+				co2value = co2aqi;
+				
 			}
 		});
 
