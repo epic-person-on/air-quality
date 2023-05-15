@@ -25,17 +25,41 @@
 			</ul>
 		</section>
 		<section class="call-to-action">
-			<h3>Join us</h3>
-			<p>Help us make a difference by joining our movement for cleaner air. Sign up for our newsletter to stay updated on the latest news and events.</p>
-			<form action="submit.php">
-				<label for="email">Email:</label>
+			<h3>Aqi finder</h3>
+			<p>Enter a city name to find its air quality</p> 
+			<form>
+				<label for="City">City:</label>
 				<input type="email" name="email" id="email" required>
-				<input type="submit" value="Sign Up">
+				<input type="submit" value="Sign Up" onclick="handleSubmit()">
 			</form>
 		</section>
 	</main>
 	<footer>
 		<p>&copy; 2023 Air Quality Awareness</p>
 	</footer>
+<script>
+	
+	function handleSubmit() {
+		var emailInput = document.getElementById("email");
+		var emailValue = emailInput.value;
+		const data = null;
+
+		const xhr = new XMLHttpRequest();
+		xhr.withCredentials = true;
+
+		xhr.addEventListener('readystatechange', function () {
+			if (this.readyState === this.DONE) {
+				console.log(this.responseText);
+			}
+		});
+
+		xhr.open('GET', 'https://air-quality-by-api-ninjas.p.rapidapi.com/v1/airquality?city=' + encodeURI(emailValue));
+		xhr.setRequestHeader('X-RapidAPI-Key', '3b143502a0mshe887b77a672d0b8p10626cjsnaf8a412d73d3');
+		xhr.setRequestHeader('X-RapidAPI-Host', 'air-quality-by-api-ninjas.p.rapidapi.com');
+
+		xhr.send(data);
+		}
+	
+</script>
 </body>
 </html>
