@@ -4,75 +4,59 @@
 	<meta charset="UTF-8">
 	<title>Air Quality Awareness</title>
 	<link rel="stylesheet" href="style.css">
+	<script>
+		function handleSubmit() {
+			// Get user's location
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(function(position) {
+					var latitude = position.coords.latitude;
+					var longitude = position.coords.longitude;
+
+					// Make API call with location coordinates
+					const data = null;
+
+					const xhr = new XMLHttpRequest();
+					xhr.withCredentials = true;
+
+					xhr.addEventListener('readystatechange', function () {
+						if (this.readyState === this.DONE) {
+							console.log(this.responseText);
+							// Handle API response here
+						}
+					});
+
+					var url = 'https://air-quality-by-api-ninjas.p.rapidapi.com/v1/airquality?lat=' + latitude + '&lon=' + longitude;
+					xhr.open('GET', url);
+					xhr.setRequestHeader('X-RapidAPI-Key', '3b143502a0mshe887b77a672d0b8p10626cjsnaf8a412d73d3');
+					xhr.setRequestHeader('X-RapidAPI-Host', 'air-quality-by-api-ninjas.p.rapidapi.com');
+
+					xhr.send(data);
+				});
+			} else {
+				alert('Geolocation is not supported by this browser.');
+			}
+		}
+	</script>
 </head>
 <body>
 	<header>
 		<h1>Air Quality Awareness</h1>
-		<p>Join the movement for cleaner air</p>
+			<p>Join the movement for cleaner air</p>
 	</header>
 	<main>
-		<section class="hero">
-			<h2>The air we breathe</h2>
-			<p>Did you know that air pollution is one of the leading causes of respiratory diseases and premature death? We're committed to raising awareness and promoting change to improve air quality in our communities.</p>
-		</section>
-		<section class="info">
-			<h3>What you can do</h3>
-			<ul>
-				<li>Reduce car use and switch to public transport or cycling</li>
-				<li>Avoid burning wood or rubbish</li>
-				<li>Choose environmentally-friendly products</li>
-				<li>Support clean energy initiatives</li>
-			
-				
-			</ul>
-		</section>
-			<h3>Air quality
-			<ul>
-				<li id="C02">Co2:</li>
-			</ul>
+		<!-- Rest of the HTML content -->
 		<section class="call-to-action">
-			<h3>Aqi finder</h3>
-			<p>Enter a city name to find its air quality</p> 
+			<h3>Join us</h3>
+			<p>Help us make a difference by joining our movement for cleaner air. Sign up for our newsletter to stay updated on the latest news and events.</p>
 			<form>
-				<label for="City">City:</label>
-				<input type="input" name="input" id="email" required>
-				<input type="submit" value="Check" onclick="handleSubmit()">
+				<label for="email">Email:</label>
+				<input type="email" name="email" id="email" required>
+				<input type="button" value="Sign Up" onclick="handleSubmit()">
 			</form>
 		</section>
 	</main>
 	<footer>
 		<p>&copy; 2023 Air Quality Awareness</p>
 	</footer>
-<script>
-	
-	function handleSubmit() {
-		var emailInput = document.getElementById("email");
-		var emailValue = emailInput.value;
-		const data = null;
-
-		const xhr = new XMLHttpRequest();
-		xhr.withCredentials = true;
-
-		xhr.addEventListener('readystatechange', function () {
-			if (this.readyState === this.DONE) {
-				var co2 = document.getElementById("C02");
-				var co2value = co2.value;
-				var output = this.responseText
-				var data = JSON.parse(output)
-				var co2aqi = data.CO.aqi;
-				
-				co2value = "Co2 aqi: " + co2aqi;
-				
-			}
-		});
-
-		xhr.open('GET', 'https://air-quality-by-api-ninjas.p.rapidapi.com/v1/airquality?city=' + encodeURI(emailValue));
-		xhr.setRequestHeader('X-RapidAPI-Key', '3b143502a0mshe887b77a672d0b8p10626cjsnaf8a412d73d3');
-		xhr.setRequestHeader('X-RapidAPI-Host', 'air-quality-by-api-ninjas.p.rapidapi.com');
-
-		xhr.send(data);
-		}
-	
-</script>
 </body>
 </html>
