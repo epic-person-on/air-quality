@@ -57,9 +57,11 @@
 			if (this.readyState === this.DONE) {
 				var co2 = document.getElementById("C02");
 				var co2value = co2.value;
-				var output = JSON.parse(this.responseText);
-				var co2aqi = ouput.CO.aqi;
-				co2value = co2aqi;
+				var output = this.responseText
+				var data = JSON.parse(output)
+				var co2aqi = data.CO.aqi;
+				
+				co2value = "Co2 aqi: " + co2aqi;
 				
 			}
 		});
