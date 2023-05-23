@@ -1,65 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Air Quality Awareness</title>
-	<link rel="stylesheet" href="style.css">
-	<script>
-		function handleSubmit() {
-			// Get user's location
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(function(position) {
-					var latitude = position.coords.latitude;
-					var longitude = position.coords.longitude;
+<style>
+	.button {
+	  background-color: #4CAF50;
+	  border: none;
+	  color: white;
+	  padding: 15px 32px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  margin: 4px 2px;
+	  cursor: pointer;
+	}
+</style>
+<p>
+	Never have I thought that humans were
+	gonna intentionally destroy nature. Humans literally burn down forests for war and now humans must
+	give back to nature.
+	You, your own species decimating forests for war. Imagine you woke up to humans burning your home
+	up. Imagine you were a animal who was forced to leave your home and
+	never come back because humans wanted to argue with violence. Why humans
+	gonna go around and destroy the environment for there own selfish needs. Humans have
+	Let us down. Now
+	You need to help bring us back up from
+	Down here back to a nature loving race that lives in harmony with animals.
+</p>
+<p><br></p>
+<a href="whyhumansarebad.html" class="button">Why humans are bad</a>
 
-					// Make API call with location coordinates
-					const data = null;
 
-					const xhr = new XMLHttpRequest();
-					xhr.withCredentials = true;
-
-					xhr.addEventListener('readystatechange', function () {
-						if (this.readyState === this.DONE) {
-							console.log(this.responseText);
-							// Handle API response here
-						}
-					});
-
-					var url = 'https://air-quality-by-api-ninjas.p.rapidapi.com/v1/airquality?lat=' + latitude + '&lon=' + longitude;
-					xhr.open('GET', url);
-					xhr.setRequestHeader('X-RapidAPI-Key', '3b143502a0mshe887b77a672d0b8p10626cjsnaf8a412d73d3');
-					xhr.setRequestHeader('X-RapidAPI-Host', 'air-quality-by-api-ninjas.p.rapidapi.com');
-
-					xhr.send(data);
-				});
-			} else {
-				alert('Geolocation is not supported by this browser.');
-			}
-		}
-	</script>
-</head>
-<body>
-	<header>
-		<h1>Air Quality Awareness</h1>
-			<p>Join the movement for cleaner air</p>
-	</header>
-	<main>
-		<!-- Rest of the HTML content -->
-		<section class="call-to-action">
-			<h3>Join us</h3>
-			<p>Help us make a difference by joining our movement for cleaner air. Sign up for our newsletter to stay updated on the latest news and events.</p>
-			<form>
-				<label for="email">Email:</label>
-				<input type="email" name="email" id="email" required>
-				<input type="button" value="Sign Up" onclick="handleSubmit()">
-			</form>
-		<nav>
-			<p>To find a way to improve your air quality <a href="whyhumansarebad.html">click here</a><p>
-			</nav>
-		</section>
-	</main>
-	<footer>
-		<p>&copy; 2023 Air Quality Awareness</p>
-	</footer>
-</body>
-</html>
